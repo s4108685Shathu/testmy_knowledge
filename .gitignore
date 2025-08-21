@@ -73,3 +73,8 @@ vendor/bundle/
 
 # Testing
 coverage/
+
+# Expo
+.expo/
+.expo-shared/
+web-build/
