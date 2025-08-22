@@ -1,0 +1,42 @@
+name: CI - React Native
+
+on:
+  push:
+    branches-ignore:
+      - main
+      - develop
+  pull_request:
+    branches:
+      - develop
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Checkout repo
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # Setup Node.js
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+          cache: 'npm'
+
+      # Install dependencies
+      - name: Install dependencies
+        run: npm install
+
+      # Run linter
+      - name: Run ESLint
+        run: npm run lint --if-present
+
+      # Run formatter check (optional if you have Prettier)
+      - name: Run Prettier Check
+        run: npm run format --if-present
+
+      # Run tests
+      - name: Run Tests
+        run: npm test --if-present
