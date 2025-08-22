@@ -1,3 +1,3 @@
-test('Dummy test that always passes', () => {
-  expect(true).toBe(true);
+test('Dummy test that always fails', () => {
+  expect(true).toBe(false);   // ❌ wrong expectation
 });
